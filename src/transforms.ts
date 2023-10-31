@@ -15,7 +15,7 @@ type ListItem = {
   items: Array<ListItem>;
 };
 
-const alignType = ["left", "right", "center", "justify"]
+const alignType = ["left", "right", "center", "justify"];
 
 export type block = {
   type: string;
@@ -55,10 +55,13 @@ const transforms: transforms = {
   paragraph: ({ data }) => {
     const paragraphAlign = data.alignment || data.align;
 
-    if (typeof paragraphAlign !== 'undefined' && alignType.includes(paragraphAlign)) {
+    if (
+      typeof paragraphAlign !== "undefined" &&
+      alignType.includes(paragraphAlign)
+    ) {
       return `<p style="text-align:${paragraphAlign};">${data.text}</p>`;
     } else {
-      return `<p>${data.text}</p>`
+      return `<p>${data.text}</p>`;
     }
   },
 
@@ -98,13 +101,13 @@ const transforms: transforms = {
   embed: ({ data }) => {
     switch (data.service) {
       case "twitter":
-        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+        return `<iframe width="${data.width}" src="${data.embed}" style="min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "x.com":
-        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+        return `<iframe width="${data.width}" src="${data.embed}" style="min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "instagram":
-        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+        return `<iframe width="${data.width}" src="${data.embed}" style="width: 100%; min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "facebook":
-        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+        return `<iframe width="500" src="${data.embed}" style="min-height: 500px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "youtube":
         return `<iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       default:
