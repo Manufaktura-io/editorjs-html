@@ -117,11 +117,31 @@
     {
       "type": "embed",
       "data": {
-        "service": "vimeo",
-        "source": "https://vimeo.com/165206543",
-        "embed": "https://player.vimeo.com/video/165206543?title=0&byline=0",
-        "width": 580,
-        "height": 320,
+        "service": "instagram",
+        "source": "https://www.instagram.com/reel/CybSOMAsgia/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
+        "embed": "https://www.instagram.com/p/CybSOMAsgia/embed",
+        "width": 400,
+        "height": 505,
+        "caption": ""
+      }
+    },
+    {
+      "type": "embed",
+      "data": {
+        "service": "facebook",
+        "source": "https://www.facebook.com/photo/?fbid=821063953353310&amp;set=a.464771095649266",
+        "embed": "https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/photo/?fbid=821063953353310&amp;set=a.464771095649266&amp;width=500",
+        "caption": ""
+      }
+    },
+    {
+      "type": "embed",
+      "data": {
+        "service": "x.com",
+        "source": "https://x.com/UNN_News_agency/status/1718880092212883923?s=20",
+        "embed": "https://twitframe.com/show?url=https://twitter.com/UNN_News_agency/status/1718880092212883923?s=20",
+        "width": 600,
+        "height": 300,
         "caption": ""
       }
     },
