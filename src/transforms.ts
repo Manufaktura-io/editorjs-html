@@ -33,7 +33,7 @@ export type block = {
     items?: Array<string> | Array<ListItem>;
     style?: string;
     code?: string;
-    service?: "vimeo" | "youtube";
+    service?: "youtube" | "twitter" | "x.com" | "instagram" | "facebook";
     source?: string;
     embed?: string;
     width?: number;
@@ -97,13 +97,19 @@ const transforms: transforms = {
 
   embed: ({ data }) => {
     switch (data.service) {
-      case "vimeo":
-        return `<iframe src="${data.embed}" height="${data.height}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      case "twitter":
+        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+      case "x.com":
+        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+      case "instagram":
+        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
+      case "facebook":
+        return `<iframe width="${data.width}" src="${data.embed}" height="${data.height}" frameborder="0"></iframe>`;
       case "youtube":
         return `<iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       default:
         throw new Error(
-          "Only Youtube and Vime Embeds are supported right now."
+          "Only Youtube, Twitter, X.com, Instagram, Facebook Embeds are supported right now."
         );
     }
   },
