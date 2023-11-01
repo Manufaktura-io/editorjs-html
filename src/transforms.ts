@@ -33,7 +33,13 @@ export type block = {
     items?: Array<string> | Array<ListItem>;
     style?: string;
     code?: string;
-    service?: "youtube" | "twitter" | "x.com" | "instagram" | "facebook" | "t.me";
+    service?:
+      | "youtube"
+      | "twitter"
+      | "x.com"
+      | "instagram"
+      | "facebook"
+      | "t.me";
     source?: string;
     embed?: string;
     width?: number;
@@ -101,7 +107,10 @@ const transforms: transforms = {
   embed: ({ data }) => {
     switch (data.service) {
       case "t.me":
-        return `<div style="margin: 20px 0; width: 100%;"><script async='' src='https://telegram.org/js/telegram-widget.js?21' data-width='100%'></script><iframe src="${data.embed}" width='600' height='600' style='margin: 0 auto;' frameborder='0' scrolling='no' allowtransparency='true'></iframe></div>`;
+        const str = data.source?.split("/"),
+          id_ = str ? `${str[3]}-${str[4]}` : "",
+          id = str ? `${str[3]}/${str[4]}` : "";
+        return `<div style="margin: 20px 0; width: 100%;"><script async data-telegram-post="${id}" src="https://telegram.org/js/telegram-widget.js?21" data-width="100%"></script><iframe id="telegram-post-${id_}" src="${data.embed}" width="100%" height frameborder="0" style="margin: 0 auto;" scrolling="no" allowtransparency="true"></iframe></div>`;
       case "twitter":
         return `<iframe width="${data.width}" src="${data.embed}" style="min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "x.com":
