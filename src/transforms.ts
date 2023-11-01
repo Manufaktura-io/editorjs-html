@@ -108,9 +108,9 @@ const transforms: transforms = {
     switch (data.service) {
       case "t.me":
         const str = data.source?.split("/"),
-          id_ = str ? `${str[3]}-${str[4]}` : "",
+          // id_ = str ? `${str[3]}-${str[4]}` : "",
           id = str ? `${str[3]}/${str[4]}` : "";
-        return `<div style="margin: 20px 0; width: 100%;"><script async data-telegram-post="${id}" src="https://telegram.org/js/telegram-widget.js?21" data-width="100%"></script><iframe id="telegram-post-${id_}" src="${data.embed}" width="100%" height frameborder="0" style="margin: 0 auto;" scrolling="no" allowtransparency="true"></iframe></div>`;
+        return `<div style="margin: 20px 0; width: 100%;"><script async data-telegram-post="${id}" src="https://telegram.org/js/telegram-widget.js?21" data-width="100%"></script></div>`;
       case "twitter":
         return `<iframe width="${data.width}" src="${data.embed}" style="min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "x.com":
