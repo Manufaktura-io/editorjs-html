@@ -29,7 +29,7 @@ export declare type block = {
         items?: Array<string> | Array<ListItem>;
         style?: string;
         code?: string;
-        service?: "youtube" | "twitter" | "x.com" | "instagram" | "facebook";
+        service?: "youtube" | "twitter" | "x.com" | "instagram" | "facebook" | "t.me";
         source?: string;
         embed?: string;
         width?: number;
