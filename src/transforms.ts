@@ -101,9 +101,7 @@ const transforms: transforms = {
   embed: ({ data }) => {
     switch (data.service) {
       case "t.me":
-        const params = data.embed?.match(/^https?:\/\/t\.me\/(\w+)\/(\d+?.*)?$/);
-        const id = params ? `${params[1]}/${params[2]}` : data.embed;
-        return `<div><script async='' src='https://telegram.org/js/telegram-widget.js?21' data-telegram-post='${id}' data-width='100%'></script><iframe src="${data.embed}" width='600' height='600' style='margin: 0 auto;' frameborder='0' scrolling='no' allowtransparency='true'></iframe></div>`;
+        return `<div style="margin: 20px 0; width: 100%;"><script async='' src='https://telegram.org/js/telegram-widget.js?21' data-width='100%'></script><iframe src="${data.embed}" width='600' height='600' style='margin: 0 auto;' frameborder='0' scrolling='no' allowtransparency='true'></iframe></div>`;
       case "twitter":
         return `<iframe width="${data.width}" src="${data.embed}" style="min-height: 630px; max-height: 1000px;" frameborder="0"></iframe>`;
       case "x.com":
