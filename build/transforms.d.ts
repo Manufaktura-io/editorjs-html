@@ -1,4 +1,4 @@
-export declare type transforms = {
+export type transforms = {
     [key: string]: any;
     delimiter(): string;
     header(block: block): string;
@@ -8,15 +8,17 @@ export declare type transforms = {
     quote(block: block): string;
     code(block: block): string;
     embed(block: block): string;
+    raw(block: block): string;
 };
-declare type ListItem = {
+type ListItem = {
     content: string;
     items: Array<ListItem>;
 };
-export declare type block = {
+export type block = {
     type: string;
     data: {
         text?: string;
+        html?: string;
         level?: number;
         caption?: string;
         url?: string;

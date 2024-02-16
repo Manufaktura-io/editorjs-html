@@ -1,6 +1,6 @@
 import { OutputData } from "@editorjs/editorjs";
 import { block } from "./transforms";
-declare type parser = {
+type parser = {
     parse(OutputData: OutputData): Array<string>;
     parseStrict(OutputData: OutputData): Array<string> | Error;
     parseBlock(block: block): string;
