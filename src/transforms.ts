@@ -90,7 +90,7 @@ const transforms: transforms = {
         let caption = data.caption ? data.caption : "";
         return `
         <img src="${data.file && data.file.url ? data.file.url : data.url}" alt="${caption}" />
-        <div className="imageCaption"><i>${caption}</i></div>
+        <div class="imageCaption"><i>${caption}</i></div>
         `;
     },
 
