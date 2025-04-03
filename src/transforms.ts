@@ -35,13 +35,7 @@ export type block = {
         items?: Array<string> | Array<ListItem>;
         style?: string;
         code?: string;
-        service?:
-            | "youtube"
-            | "twitter"
-            | "x.com"
-            | "instagram"
-            | "facebook"
-            | "t.me";
+        service?: "youtube" | "twitter" | "x.com" | "instagram" | "facebook" | "t.me";
         source?: string;
         embed?: string;
         width?: number;
@@ -67,10 +61,7 @@ const transforms: transforms = {
     paragraph: ({data}) => {
         const paragraphAlign = data.alignment || data.align;
 
-        if (
-            typeof paragraphAlign !== "undefined" &&
-            alignType.includes(paragraphAlign)
-        ) {
+        if (typeof paragraphAlign !== "undefined" && alignType.includes(paragraphAlign)) {
             return `<p style="text-align:${paragraphAlign};">${data.text}</p>`;
         } else {
             return `<p>${data.text}</p>`;
@@ -96,10 +87,11 @@ const transforms: transforms = {
     },
 
     image: ({data}) => {
-        let caption = data.caption ? data.caption : "Image";
-        return `<img src="${
-            data.file && data.file.url ? data.file.url : data.url
-        }" alt="${caption}" />`;
+        let caption = data.caption ? data.caption : "";
+        return `
+        <img src="${data.file && data.file.url ? data.file.url : data.url}" alt="${caption}" />
+        <div className="imageCaption"><i>${caption}</i></div>
+        `;
     },
 
     quote: ({data}) => {
@@ -129,9 +121,7 @@ const transforms: transforms = {
             case "youtube":
                 return `<iframe width="${data.width}" height="${data.height}" src="${data.embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             default:
-                throw new Error(
-                    "Only Youtube, Twitter, X.com, Instagram, Facebook Embeds are supported right now."
-                );
+                throw new Error("Only Youtube, Twitter, X.com, Instagram, Facebook Embeds are supported right now.");
         }
     },
 };
