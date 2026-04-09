@@ -9,6 +9,7 @@ export type transforms = {
     code(block: block): string;
     embed(block: block): string;
     raw(block: block): string;
+    table(block: block): string;
 };
 type ListItem = {
     content: string;
@@ -38,6 +39,8 @@ export type block = {
         height?: number;
         alignment?: "left" | "right" | "center" | "justify";
         align?: "left" | "right" | "center" | "justify";
+        withHeadings?: boolean;
+        content?: string[][];
     };
 };
 declare const transforms: transforms;

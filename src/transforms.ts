@@ -9,6 +9,7 @@ export type transforms = {
     code(block: block): string;
     embed(block: block): string;
     raw(block: block): string;
+    table(block: block): string;
 };
 
 type ListItem = {
@@ -42,6 +43,8 @@ export type block = {
         height?: number;
         alignment?: "left" | "right" | "center" | "justify";
         align?: "left" | "right" | "center" | "justify";
+        withHeadings?: boolean;
+        content?: string[][];
     };
 };
 
@@ -123,6 +126,34 @@ const transforms: transforms = {
             default:
                 throw new Error("Only Youtube, Twitter, X.com, Instagram, Facebook Embeds are supported right now.");
         }
+    },
+
+    table: ({data}) => {
+        const rows = data.content || [];
+        if (!rows.length) return "";
+
+        let html = '<table class="tc-table">';
+        const startIndex = data.withHeadings ? 1 : 0;
+
+        if (data.withHeadings && rows.length > 0) {
+            html += "<thead><tr>";
+            rows[0].forEach((cell: string) => {
+                html += `<th>${cell}</th>`;
+            });
+            html += "</tr></thead>";
+        }
+
+        html += "<tbody>";
+        for (let i = startIndex; i < rows.length; i++) {
+            html += "<tr>";
+            rows[i].forEach((cell: string) => {
+                html += `<td>${cell}</td>`;
+            });
+            html += "</tr>";
+        }
+        html += "</tbody></table>";
+
+        return html;
     },
 };
 
